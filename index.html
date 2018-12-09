@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+	<style>
+	body{background-image: url('./img/noise2.gif');}
+	@font-face { font-family: 'Kanibuk'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.5/Kanibuk.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+		h1,h2,h3,h4,p {font-family: 'Kanibuk', serif;text-decoration: none; color:black;}
+
+	h3{font-size:1.6em; line-height: 1.9; margin:0; text-align: justify; color:#2a2492;}
+	p{font-size: 1.1em; line-height: 1.9; margin:0; text-align: justify; color:#2a2492;}
+
+	header{width:1920px; background-color:rgba(237,237,235,0.5); margin:auto;}
+	section{width:1920px; background-color:rgba(237,237,235,0.5); margin:auto;}
+	footer {width:1920px; background-color:rgba(237,237,235,0.5); margin:auto;}
+	img{display: block;}
+
+	.firstbox{width:1400px; height:741px; margin: auto; background-color:rgba(237,237,235,0.5); font-weight: bold;}
+	.firstbox2{width:1400px; height:220px; margin: auto; background-color:rgba(237,237,235,0);}
+	.musicplayer{width:100px; height:30px; background: red; }
+	.css-typing p{border-right: .15em solid orange; font-size: 18.50px; white-space: nowrap; overflow: hidden; color:#2a2492;}
+	.css-typing p:nth-child(1) {width: 100px; font-size: 1.5em; animation: type 2s steps(40, end); animation-fill-mode: forwards; margin-left:650px;}
+	.css-typing p:nth-child(2) {width: 1040px; opacity: 0; animation: type2 4s steps(40, end); animation-delay: 2s;animation-fill-mode: forwards; margin-left: 180px;}
+	.css-typing p:nth-child(3) {width: 800px; opacity: 0; animation: type3 4s steps(40, end); animation-delay: 6s;animation-fill-mode: forwards; margin-left: 300px;}
+	.css-typing p:nth-child(4) {width: 1140px; opacity: 0; animation: type4 4s steps(40, end); animation-delay: 10s;animation-fill-mode: forwards; margin-left: 130px;}
+	.css-typing p:nth-child(5) {width: 510px; opacity: 0; animation: type5 4s steps(40, end), blink .4s step-end infinite alternate; animation-delay: 14s; animation-fill-mode: forwards;  margin-left: 445px;}
+
+
+@keyframes type {
+  0% {width: 0;}
+  99.9% {border-right: .15em solid orange;}
+  100% {border: none;}}
+
+@keyframes type2 {
+  0% {width: 0;}
+  1% {opacity: 1;}
+  99.9% {border-right: .15em solid orange;}
+  100% {opacity: 1; border: none;}}
+
+  @keyframes type3 {
+  0% {width: 0;}
+  1% {opacity: 1;}
+  99.9% {border-right: .15em solid orange;}
+  100% {opacity: 1; border: none;}}
+
+   @keyframes type4 {
+  0% {width: 0;}
+  1% {opacity: 1;}
+  99.9% {border-right: .15em solid orange;}
+  100% {opacity: 1; border: none;}}
+
+@keyframes type5 {
+  0% {width: 0;}
+  1% {opacity: 1;}
+  100% {opacity: 1;}}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+	.imagebox1{width:1300px; height:842px; margin: auto; background-color:rgba(237,237,235,0.5); opacity: 0.7; padding-left:100px;}
+
+.statistics{width:1400px; height:800px; margin: auto; background-color:rgba(237,237,235,0.5); display: flex;
+  flex-direction: column; justify-content: center; align-items: center;}
+
+.title {
+    margin: 2em 0 5em;
+    padding: 0 0.5em;
+    text-align: center;
+}
+.title span {
+    display: block;
+    font-size: 80%;
+}
+caption {
+    font-style: italic;
+}
+
+/* All fallback table styling for screens less than 800px */
+/*****************************************************************/
+@media(max-width: 800px) {
+
+    body {
+        padding: 20px 0 0;
+    }
+
+    /*h2*/.title {
+        margin: 0 auto 1em;
+        max-width: 600px;
+        text-align: left;
+    }
+
+    #bar-graph {
+        border-collapse: collapse;
+        margin: 0 auto;
+        max-width: 600px;
+        padding: 0 10px;
+        width: 100%;
+    }
+
+    #bar-graph caption {
+        border-bottom: 1px solid #111;
+        font-size: 20px;
+        padding: 0 0 10px 10px;
+        text-align: left;
+    }
+
+    #bar-graph tr th,
+    #bar-graph tr td {
+        border-bottom: 1px solid #E7E7E7;
+        padding: 10px;
+    }
+
+    #bar-graph tbody tr th {
+        text-align: left;
+    }
+
+    #bar-graph thead tr th,
+    #bar-graph tbody tr td {
+        text-align: right;
+    }
+
+    #ticks {
+        display: none;
+    }
+
+}
+
+/* All styling for bar graphs only when 800px or wider */
+/*****************************************************************/
+@media(min-width: 800px) {
+
+    body {
+        display: block;
+        margin: 0 auto;
+        max-width: 600px;
+    }
+
+    #bar-graph {
+        background: transparent;
+        display: block;
+        height: 300px;
+        margin: 1.1em 0 0;
+        padding: 0;
+        position: relative;
+        width: 600px;
+    }
+
+    #bar-graph caption {
+        caption-side: top;
+        font-size: 20px;
+        letter-spacing: .5px;
+        position: absolute;
+        text-align: left;
+        top: -80px;
+        width: 600px;
+        z-index: 10;
+    }
+
+    #bar-graph tr, #bar-graph th, #bar-graph td {
+        bottom: 3px;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        text-align: center;
+        width: 150px;
+        z-index: 2;
+    }
+
+    #bar-graph td { transition: all .3s ease; }
+    #bar-graph td:hover {
+        background-color: #111 !important;
+        color: white;
+    }
+
+    #bar-graph thead tr {
+        bottom: auto;
+        right: 0;
+        top: -46px;
+    }
+
+    #bar-graph thead th {
+        height: auto;
+        font-weight: 400;
+        padding: 0;
+        width: auto;
+    }
+
+    #bar-graph thead th.before {
+        line-height: 2;
+        right: 80px;
+    }
+    #bar-graph thead th.after {
+        line-height: 2;
+        right: 12px;
+    }
+    #bar-graph thead th.before:after,
+    #bar-graph thead th.after:after {
+        content: '';
+        height: 10px;
+        left: -15px;
+        position: absolute;
+        top: 10px;
+        width: 10px;
+    }
+    #bar-graph thead th.before:after { background: #E7E7E7; }
+    #bar-graph thead th.after:after { background: #C1C1C1; }
+
+    #bar-graph tbody tr {
+        height: 296px;
+        padding-top: 2px;
+    }
+
+    #bar-graph #section-1 { left: 20px; }
+    #bar-graph #section-1 .before { height: 250px; }
+    #bar-graph #section-1 .after { height: 280px; }
+
+    #bar-graph #section-2 { left: 220px; }
+    #bar-graph #section-2 .before { height: 250px; }
+    #bar-graph #section-2 .after { height: 282px; }
+
+    #bar-graph #section-3 { left: 420px; }
+    #bar-graph #section-3 .before { height: 248px; }
+    #bar-graph #section-3 .after { height: 286px; }
+
+    #bar-graph tbody th {
+        bottom: -1.75em;
+        font-weight: normal;
+        vertical-align: top;
+    }
+
+    #bar-graph .bar {
+        border-bottom: none;
+        border: 1px solid;
+        color: #000;
+        width: 50px;
+    }
+    #bar-graph .bar p { margin: 5px 0 0; padding: 0; }
+
+    #bar-graph tbody {
+        display: block;
+        height: 340px;
+    }
+
+    #bar-graph tbody .before {
+        background-color: #E7E7E7;
+        border-color: transparent;
+        left: 20px;
+    }
+
+    #bar-graph tbody .after {
+        background-color: #C1C1C1;
+        border-color: transparent;
+        left: 75px;
+    }
+
+    #ticks {
+        display: block;
+        height: 300px;
+        left: -10px;
+        margin-bottom: -300px;
+        position: relative;
+        top: -300px;
+        width: 595px;
+        z-index: 1;
+    }
+
+    #ticks .tick {
+        border-bottom: 1px solid #E7E7E7;
+        height: 59px;
+        position: relative;
+        width: 600px;
+    }
+    #ticks .tick:first-child {
+        border-top: 1px solid #E7E7E7;
+    }
+    #ticks .tick:last-child {
+        border: 0;
+    }
+
+    #ticks .tick p {
+        left: -3em;
+        margin: 0 0 0 0.5em;
+        position: absolute;
+        top: -0.8em;
+    }
+
+}
+
+	.symptom{width:1400px; height:742px; margin:auto; background-color:rgba(237,237,235,0.5);}
+	.symptom2{width:1400px; height:642px; margin:auto; background-color:rgba(237,237,235,0.5);}
+	.symptomname{width:1180px; height:120px; margin:auto; padding-left:20px; }
+	.box2a{width:550px; height:235px; float:left; margin-right: 80px; margin-left:100px; padding-left:20px; padding-top:5px; background-color:rgba(255,255,255,0.3); }
+	.box2a-1{width:530px; height:235px; float:left; background-color:rgba(255,255,255,0.3);  padding-left:20px; padding-top:5px;}
+	.titlepara:hover {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  color:#fe3000;
+  font-size: 1.8em; font-weight: bold;
+  width:520px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+	.minititle{font-size:1.2em; font-weight: bold; line-height: 1.9; margin:0; text-align: justify; }
+	.symptomtext{margin-left: 40px; margin-right: 20px;}
+
+	.bigtext{width:1400px; height:542px; margin:auto; background-color:rgba(237,237,235,0.5);}
+	.big{font-size: 2em; font-weight: bold; padding-top:300px; padding-left:140px; color:#fe3000;}
+
+
+	#slideCon { position: relative;  width:1200px; height:742px; margin:auto; overflow: hidden;}
+	.mySlides { position: absolute; width:100%;height:742px; background-position: left top; cursor:pointer; }
+	.mySlides a{display: block;}
+	#sl1{ background-image: url('./img/cat1.jpg'); }
+	#sl2{ background-image: url('./img/cat2.jpg'); }
+	#sl3{ background-image: url('./img/cat3.jpg'); }
+	#sl4{ background-image: url('./img/cat4.jpg'); }
+	#sl5{ background-image: url('./img/cat5.jpg'); }
+	#sl6{ background-image: url('./img/cat6.jpg'); }
+
+	.prev,.next { cursor: pointer; position: absolute; top: 380px; width: auto; padding: 16px; margin-top: -50px; color: white; font-size: 40px; border-radius: 0 3px 3px 0; user-select: none; -webkit-user-select: none; z-index: 35;}
+
+	.next { right: 0; border-radius: 3px 0 0 3px; }
+	.prev:hover, .next:hover { cursor:pointer; background-color: rgba(0, 0, 0, 0.8); }
+	.imagebox2-1{width:1400px; height:840px; margin: auto; background-color:rgba(237,237,235,0.5);}
+	.Louis{width:1200px; height:90px; margin-top:490px; background-color:rgba(255,255,255,0.7); text-align: center; font-size: 1.2em; line-height:1.6em; font-weight: bold;}
+
+	.example{width:1400px; height:1192px; margin:auto;background-color:rgba(237,237,235,0.5);}
+	.imagebox3{width:742px; height:842px; float:left; margin-left:329px;}
+	.img3{
+    position: relative;
+    background-image: url(./img/image2.png);
+    height: 842px;
+    background-size: cover;}
+    .color {color:#fe3000;}
+    .exampletext1{position: absolute; top:50%; left:50%; transform: translate(-50%, -50%); font-size:3em; z-index: 2; text-align: center; font-weight: bold;}
+
+     .exampletext2{position: absolute; top:30%; left:10%; transform: translate(-50%, -50%); font-size:1.5em; z-index: 2; text-align: center;}
+
+     .exampletext3{position: absolute; top:24%; left:75%; transform: translate(-50%, -50%); font-size:1.5em; z-index: 2; text-align: center; width:300px;}
+
+     .exampletext4{position: absolute; top:65%; left:75%; transform: translate(-50%, -50%); font-size:1.5em; z-index: 2; text-align: center;}
+
+     .exampletext5{position: absolute; top:10%; left:60%; transform: translate(-50%, -50%); font-size:1.5em; z-index: 2; text-align: center;}
+
+     .exampletext6{position: absolute; top:80%; left:30%; transform: translate(-50%, -50%); font-size:1.5em; z-index: 2; text-align: center;}
+
+     .exampletext7{position: absolute; top:15%; left:30%; transform: translate(-50%, -50%); font-size:1.5em; z-index: 2; text-align: center;}
+
+     .exampletext8{position: absolute; top:40%; left:88%; transform: translate(-50%, -50%); font-size:1.5em; z-index: 2; text-align: center; width:500px;}
+
+     .exampletext9{position: absolute; top:58%; left:45%; transform: translate(-50%, -50%); font-size:1.5em; z-index: 2; text-align: center; width:500px;}
+
+     .exampletext10{position: absolute; top:95%; left:100%; transform: translate(-50%, -50%); font-size:1.5em; z-index: 2; text-align: center; width:500px;}
+
+     .exampletext11{position: absolute; top:73%; left:12%; transform: translate(-50%, -50%); font-size:1.5em; z-index: 2; text-align: center; width:500px;}
+
+
+	.explain{width:1400px; height:300px; margin:auto; background-color:rgba(237,237,235,0.5);}
+	.explaintext{width:1200px; height:550px; margin-left: 100px; background-color:rgba(255,255,255,0.6);}
+	
+	.vedio{width:1300px; height:900px; margin:auto; padding-left:100px; background-color:rgba(237,237,235,0.5);}
+	.hashtag{width:1100px; padding-right: 100px; background-color:rgba(255,255,255,0.6); }
+
+	.clear{clear:both;}
+
+	</style>
+</head>
+<body>
+	<audio id="music">
+		<source src="music.mp3" type="audio/mpeg">
+		</audio>
+	<header>
+		<div class="firstbox">
+			<div class="firstbox2"><button class="musicplayer">musicplay</button></div>
+			<div class="css-typing">
+  <p>조현병
+  </p>
+   <p>환각, 망상 및 사고과정의 이상 외에도 의욕 없음, 사회활동 저하, 인지기능 저하 등 많은 정신기능 영역의 손상을 보이는 병.
+  </p>
+  <p>정신증에 해당하는 증상을 경험하는 사람들 중에서 보다 여러가지 정신증 증상을 지속적으로
+  </p>
+  <p>경험해 이로 인해 일상 생활에 장애를 겪을 때 진단하며 조현병은 발병할 경우 만성화되거나 반복적인 재발을 보이는 경우가 많기 때문에
+  </p>
+  <p>정신증적 증상을 보이는 질환, 상태들 중에서도 중증에 해당.
+  </p>
+</div>
+		</div>
+	</header>
+
+	<section>
+		<div class="imagebox1">
+			<img src="./img/image1.jpg">
+		</div>
+	</section>
+	<section>
+	 <div class="symptom">
+
+	 <div class="symptomname">
+	 	<h3 class="titlepara">양성증상(positive symptoms)</h3>
+	 	<p class="minititle">‘더하기(+)’라는 의미로 일반인들에게는 없는 사고, 감정, 또는 행동이 존재하거나, 심하게 나타난다.</p>
+	 </div>
+
+	<div class="box2a">
+		<p class="minititle">망상</p>
+			<p class="symptomtext">사실과는 다른 잘못된 생각을 사실로 믿는 것.<br> 타인이 자신을 괴롭힌다는 피해망상, 자신과 관련이 없는 일을 관계됐다고 믿는 관계망상, 자신이 위대한 인물이라고 믿는 과대망상이 흔하다. 망상은 대화.설득으로 교정되지 않는다.</p>
+	</div>
+
+	<div class="box2a-1">
+	<p class="minititle">환각</p>
+		<p class="symptomtext">아무런 감각자극이 없는데도 어떤 감각을 경험하는 것.<br>다섯가지 감각기관에 따라 환시, 환청, 환후, 환미, 환촉이라 한다. 조현병 환자에게서는 환청과 환시가 흔하다.</p>
+	</div>
+
+	 <div class="clear"></div>
+	 <br><br>
+
+	<div class="box2a">
+	<p class="minititle">횡설수설</p>
+		<p class="symptomtext">말에 조리.두서가 없어서 무슨 말을 하는지 이해할 수 없는 것. <br>횡설수설하는 것은 말하는 순간에 생각이 혼란되어 있기 때문이며 사고장애가 있음을 의미한다.</p>
+	</div>
+
+	<div class="box2a-1">
+	<p class="minititle">이상한 행동</p>
+		<p class="symptomtext">상식적으로 납득할 수 없는 행동을 하는 것.<br> 기괴.기이한 행동으로 혼자서 중얼거리거나, 정처없이 거리를 헤매거나, 같은 행동을 반복, 부적절한 자세로 뻣뻣하게 가만히 있는 것 등이 있다. 망상, 환각, 심한 불안감, 공포 등이 원인인 경우가 많다.</p>
+	</div>	
+
+	 <div class="clear"></div>
+	</div>
+
+	<div class="symptom2">
+	<div class="symptomname">
+	 	<h3 class="titlepara">음성증상(negative symptoms)</h3>
+	 	<p class="minititle">‘빼기(-)’라는 의미로 일반인들에게는 있는 사고, 감정, 행동이 존재하지 않거나, 매우 경미한 정도로만 나타난다.
+	 	</p>
+	</div>
+
+	<div class="box2a">
+		<p class="minititle">감정표현의 결여</p>
+		<p class="symptomtext">마치 감정이 얼어붙었거나, 메말라 버린 듯한 것.<br>신나는 이야기, 슬픈 이야기를 할 때 조차 표정과 목소리에 변화가 없이 경직되어 있고 무덤덤하며 높낮이가 없이 단조롭다.</p>
+	</div>
+
+	<div class="box2a-1">
+		<p class="minititle">언어의 빈곤</p>
+		<p class="symptomtext">말이 전혀 없거나, 한두마디로 끝내는 것.<br> 새로운 화제를 꺼내지 못하며 상대방의 질문에 대하여 단답으로 대답한다. 말을 하다 상대방이 무슨 질문을 했는지, 자신이 무슨 말을 하다 말았는지 잊어버려서 재차 질문한다.</p>
+	</div>
+
+	 <div class="clear"></div>
+	 <br><br>
+
+	<div class="box2a">
+		<p class="minititle">무감동.무쾌락</p>
+		<p class="symptomtext">모든 일에 흥미를 잃고 무관심해지는 것.<br> 주변에서 일어나는 일, 개인적 경험, 정신병적인 경험에 무관심해져 아무것도 하지 않으며 일상적인 간단한 일, 이전에 좋아하던 일들도 하지 않고 계속 잠만 잔다.</p>
+	</div>
+	<div class="box2a-1">
+		<p class="minititle">주의집중 결함</p>
+		<p class="symptomtext">한가지 일을 꾸준히 하지 못하며 쉽게 주의가 분산되는 것.<br> 한가지 일을 십분 이상 계속 하도록 하면 불안해하고 초조해하며, 혼자서 엉뚱한 짓을 하거나, 소리를 지르거나, 왔다 갔다 한다. 흔히 ‘머리가 아프다’, ‘기억력이 없다’고 호소한다.</p>
+	</div>
+	 <div class="clear"></div>
+	</div>
+	</section>
+
+	<section>
+		<div class="bigtext">
+			<p class="big"> 다양한 생각들이 흘러넘쳐 종양같은 생물들이 내 머리에서 자라나는 것만 같다</p>
+		</div>
+	</section>
+
+	<section>
+	 <div class="example">
+		<div class="imagebox3">
+			<div class="img3">
+				<div class="exampletext1">
+					<p class="color">조현병 포비아</p>
+				</div>
+				<div class="exampletext2">
+					<p class="color">강남역 화장실 살인사건</p>
+				</div>
+				<div class="exampletext3">
+					<p class="color">인천 여아 살해 논란</p>
+				</div>
+				<div class="exampletext4">
+					<p class="color">무차별 폭행</p>
+				</div>
+				<div class="exampletext5">
+					<p class="color">“또 조현병 환자 범죄”</p>
+				</div>
+				<div class="exampletext6">
+					<p class="color">"불 지른다 소리 지르고, 母 때리고.."</p>
+				</div>
+				<div class="exampletext7">
+					<p class="color">조현병 공포심 키우는 미디어</p>
+				</div>
+				<div class="exampletext8">
+					<p class="color">방치된 '조현병 환자들' 위험 부른다</p>
+				</div>
+				<div class="exampletext9">
+					<p class="color">8세 초등생 납치 살해...</p>
+				</div>
+				<div class="exampletext10">
+					<p class="color">20대 조현병 환자, 흉기로 어머니 살해</p>
+				</div>
+				<div class="exampletext11">
+					<p class="color">조현병 환자는 범죄자?</p>
+				</div>
+		</div>
+	<div class="clear"></div>
+	<div class="exampletext"></div> 
+	</div>
+	</div>
+
+	</section>
+
+	<section>
+		<div class="imagebox2-1">
+		<div id="slideCon">
+  		<div class="mySlides" id="sl1">
+  			<p class="Louis">평생 고양이를 그린 화가 루이스 웨인은 초창기에는 많은 사랑을 받은 ‘국민화가’로 명성이 높았다.<br> 하지만 화가로서 인기를 누린 것과는 달리 그 개인의 삶은 불행하기 그지없었다.</p><a href="#"> </a></div>
+  		<div class="mySlides" id="sl2">
+  			<p class="Louis">결혼한 지 2년 만에 아내가 사망했고 돈 관리개념이 희박해 돈을 투자했다가 몽땅 날렸으며<br>그림의 저작권에 대한 청구도 하지 않아 작품에 대한 수입은 단지 그림을 그려 팔리는 것뿐이어서 생활고에 시달려야 했다.<br> 말년에는 조현병으로 인해 15년간을 정신병원에서 지내야만 했다.</p><a href="#"> </a></div>
+  		<div class="mySlides" id="sl3">
+  			<p class="Louis">루이스 웨인은 말년에 정신병원에서 지내야했고 피해망상으로 괴로움을 받으면서도 고양이그림을 그리는 것을 멈추지 않았다.<br> 작품들은 그 작성 시기를 명확히 기록되어있지 않아 보여 지는 그림은 조현병의 증상에 해당된다고 판단한 것이다.</p><a href="#"> </a></div>
+ 		<div class="mySlides" id="sl4">
+ 			<p class="Louis">조현병이 시작되면 기억력과 집중력이 저하 되고 시간과 공간에 대한 지남력이 감소된다.<br>고양이 모습을 회상하거나 재구성하는 능력이 저하.소실됐기 때문에<br> 조현병 초기에 그린 작품에서 실물고양이의 모습은 사라지고 여러 색과 모양으로 구성된 문양의 집합체로 변했다.</p>
+ 			<a href="#"> </a></div>
+  		<div class="mySlides" id="sl5">
+  			<p class="Louis">조현병이 더 진행되면 사고와 지각의 장애는 더욱 심해지고 혼자 기이한 생각에 사로잡히거나 인지기능이 저하된다.<br> 좌절, 슬픔 및 고독감 등 감정의 변화 등으로 인해 그림 속 고양이 눈의 형태마저 문양으로 변했다.</p>
+  		<a href="#"> </a></div>
+  		<div class="mySlides" id="sl6">
+  			<p class="Louis">결국 고양이 모습은 완전히 해체되고 소실되어 무엇을 표현한 그림인지 알 수 없는 추상화가 돼 버렸다.<br>화려한 색을 지닌 여러 가지의 작은 다각형으로 구성 되어있다. 그림의 변화는 화가가 고양이의 얼굴을 기억하지 못하는데 기인되었다.<br></p><a href="#"> </a></div>
+  		<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  		<a class="next" onclick="plusSlides(1)">&#10095;</a>
+  		</div>
+  	</div>
+
+	</section>
+	<section>
+		<div class="statistics">
+			<h2 class="title">
+        조현병 성별.연도별 진료인원
+    </h2>
+    <table id="bar-graph">
+        <caption>'조현병' 건강보험 진료비 빅데이터 분석한 결과</caption>
+        <thead>
+            <tr>
+                <th></th>
+                <th class="before">남성</th>
+                <th class="after">여성</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr id="section-1">
+                <th scope="row">2015</th>
+                <td class="before bar"><p>198</p></td>
+                <td class="after bar"><p>223</p></td>
+            </tr>
+            <tr id="section-2">
+                <th scope="row">2016</th>
+                <td class="before bar"><p>198</p></td>
+                <td class="after bar"><p>224</p></td>
+            </tr>
+            <tr id="section-3">
+                <th scope="row">2017</th>
+                <td class="before bar"><p>196</p></td>
+                <td class="after bar"><p>227</p></td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="ticks">
+        <div class="tick"><p>230</p></div>
+        <div class="tick"><p>184</p></div>
+        <div class="tick"><p>138</p></div>
+        <div class="tick"><p>92</p></div>
+        <div class="tick"><p>46</p></div>
+        <div class="tick"><p>0</p></div>
+    </div>
+			</div>
+					</section>
+
+	<section>
+	 <div class="explain">
+	 	<div class="explaintext">
+	 	<p>오해와 진실에 대한 글<br>
+	 		조현병은 정신질환의 ‘암’으로 불릴 만큼 심각한 병이다. 전체 정신질환의 절반 이상을 차지할 정도로 흔하다.
+
+국민 중 76만 명이 평생 한 번 이상 조현병 증상을 경험하는 것으로 나타났다. 하지만 이런 경험을 해도 상담이나 치료를 받는 사람은 39%에 그친다. 조현병이라고 인식하지 못하거나 인식해도 사회적 시선 때문에 병원 방문을 꺼리기 때문이다. 하지만 조현병은 약물로 근본적 원인을 차단할 수 있고 상담과 재활을 병행하면 얼마든지 사회에서 일상생활이 가능하다.
+ 
+또한 조현병은 범죄와의 연관성이 적다. 전체 범죄자 중 정신질환자 비율은 0.3% 정도다. 한 해 200만 건의 범죄 가운데 정신질환자가 저지른 것이 2014년 6301건, 2015년 7016건이다. 조현병의 유병률이 1%라는 점을 고려하면 조현병이 범죄와 거의 연관성이 없다고 볼 수 있다.
+
+정신질환자의 범죄는 대부분 적절한 치료를 받기 전에 발생하며 치료를 시작하기만 해도 범죄 위험성이 94% 감소한다. 그렇기때문에 정신질환자들은 잠재적 범죄자로 취급하기보단 지속적으로 치료를 받을 수 있도록 치료 환경을 개선하고, 정부가 체계적으로 관리해야 한다. 
+</p>
+		</div>
+	</div>
+	</section>
+
+	<section>
+	 <div class="vedio">
+	 	<iframe width="1200" height="675" src="https://www.youtube.com/embed/fxdQadd5W70" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	 	<p class="hashtag">#조현병 #조현병 증상 #조현병 체험 #조현병 치료 #조현병 영화 #조현병 환자 #조현병 범죄 #다큐멘터리  #마음의 줄을 연주하다 #내 말 좀 들어주세요 # 아프거나 나쁘거나, 조현병 범죄의 진실 #병든 마음의 허상 #국립정신건강센터 #교육영상</p>
+	 </div>
+	</section>
+
+	<section>
+	 <div class="movie">
+	 	
+	 </div>
+	</section>
+
+<script type="text/javascript">
+	var toggle4 = "off";
+	musicplayer.onclick =function() {
+		if(toggle4 == "off"){
+		music.play();
+		toggle4	 = "on";
+		}else{
+		music.pause();
+		toggle4 = "off"
+		}
+	}
+
+var slideIndex = 1;
+var prevIndex = 6;
+showSlides(slideIndex);
+var slideTimer = setInterval(plusS, 2000);
+
+(function(){
+      slideCon.onmouseover = function(){
+        console.log("over");
+        clearInterval(slideTimer);
+      }
+      slideCon.onmouseout = function(){
+        console.log("out");
+        slideTimer = setInterval(plusS, 2000);
+      }
+})();
+
+function plusS() { plusSlides(1); }
+function plusSlides(n) { showSlides(slideIndex += n);}
+function currentSlide(n) { showSlides(slideIndex = n);}
+function showSlides(n) {
+  var i=0, slides = document.getElementsByClassName("mySlides");
+  
+  if (n > slides.length) {slideIndex = 1};
+  if (n < 1) {slideIndex = slides.length};
+  
+    for(i=0; i< slides.length; i++){
+      slides[i].style.zIndex = "29";
+    }
+    
+    slides[slideIndex - 1].style.zIndex = "31";
+    slides[prevIndex - 1].style.zIndex = "30";
+
+    if(slideIndex > prevIndex){
+      slides[slideIndex - 1].style.animationName = "example";
+      slides[prevIndex - 1].style.animationName = "example4";
+    }else{
+      slides[slideIndex - 1].style.animationName = "example2";
+      slides[prevIndex - 1].style.animationName = "example3";
+    }   
+  prevIndex = slideIndex;
+
+}
+</script>
+
+
+
+
+
+
+
+	
+</body>
+</html>
